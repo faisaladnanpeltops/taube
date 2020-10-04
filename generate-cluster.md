@@ -3,7 +3,7 @@
 ```
 gcloud compute networks create taube --subnet-mode custom
 
-gcloud compute networks subnets create taube \
+gcloud compute networks subnets create taube-net \
   --network taube \
   --range 10.240.0.0/24
 ```
@@ -41,7 +41,7 @@ for i in 0 1 2; do
     --machine-type e2-standard-2 \
     --private-network-ip 10.240.0.1${i} \
     --scopes compute-rw,storage-ro,service-management,service-control,logging-write,monitoring \
-    --subnet kubernetes \
+    --subnet taube-net \
     --tags taube,controller
 done
 ```
@@ -58,7 +58,7 @@ for i in 0 1 2; do
     --metadata pod-cidr=10.200.${i}.0/24 \
     --private-network-ip 10.240.0.2${i} \
     --scopes compute-rw,storage-ro,service-management,service-control,logging-write,monitoring \
-    --subnet kubernetes \
+    --subnet taube-net \
     --tags taube,worker
 done
 ```
