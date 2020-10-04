@@ -3,7 +3,7 @@
 ```
 gcloud compute networks create taube --subnet-mode custom
 
-gcloud compute networks subnets create kubernetes \
+gcloud compute networks subnets create taube \
   --network taube \
   --range 10.240.0.0/24
 ```
